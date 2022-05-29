@@ -21,7 +21,7 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 * BootStrap
 * veit js
 * vanilla js
-* Tensorflow Face-Api
+* [Tensorflow Face-Api](https://github.com/vladmandic/face-api)
 * Google Firebase 
 * Azure Qna Services
 
