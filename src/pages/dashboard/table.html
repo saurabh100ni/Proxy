@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheet/styles.css">
+</head>
+</head>
+
+<body style="background-color:black">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand themeColor productName" href="index.html"><span>Proxy</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class=" collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                    <li class="nav-item  active">
+                        <a class="nav-link" href="#WelcomeElContainer"><span class="navItems themeColor">Home</span>
+                            <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#featurePaneBookmark"><span
+                                class="navItems themeColor">Features</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#contactBookmark"><span class="navItems themeColor">Contact</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link btn bg-dark text-light signInBtn"
+                            href="./Utilities/pages/loginOrSignup.html#signUpPane">Sign in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-group pull-left">
+        <input type="text" class="search form-control" placeholder="Enter email for attendence"
+            style="width:430px !important;">
+    </div>
+    <span class="counter pull-right"></span>
+    <table class="table table-dark table-bordered results mb-5 w-75">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-md-4 col-xs-5">Name</th>
+                <th class="col-md-4 col-xs-4">Email</th>
+                <th class="col-md-3 col-xs-3">Date</th>
+                <th class="col-md-3 bg-light text-dark  bg-lightcol-xs-3">Status</th>
+            </tr>
+            <tr class="warning no-result">
+                <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Vatanay Özbeyli</td>
+                <td>UI & UX</td>
+                <td>Istanbul</td>
+                <td class="text-success bg-light">Present</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Burak Özkan</td>
+                <td>Software Developer</td>
+                <td>Istanbul</td>
+                <td class="text-danger bg-light">Absent</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Egemen Özbeyli</td>
+                <td>Purchasing</td>
+                <td>Kocaeli</td>
+                <td class="bg-light text-success">Present</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Engin</td>
+                <td>Sales</td>
+                <td>Bozuyük</td>
+                <td class=" text-success bg-light">Prsent</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

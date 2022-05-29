@@ -1,18 +1,94 @@
+import { app, db, storage } from "../../../../lib/firebase";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  updateDoc,
+  doc,
+  arrayUnion,
+} from "firebase/firestore";
+
 // targeting video element
 const video = document.getElementById("videoInput");
 const videoContainer = document.getElementById("videoContainer");
 
-// // making promises to load the models
-// Promise.all([
-//   // calling the face detection model
-//   faceapi.nets.tinyFaceDetector.loadFromUri("./FaceDetection/models"),
-//   // calling the face landmark model
-//   faceapi.nets.faceRecognitionNet.loadFromUri("./FaceDetection/models/"),
-//   // calling the face descriptor model
-//   faceapi.nets.faceLandmark68Net.loadFromUri("./FaceDetection/models/"),
-//   // calling the face descriptor model
-//   faceapi.nets.ssdMobilenetv1.loadFromUri("./FaceDetection/models/"),
-// ]).then(start);
+// user data
+let users = await getDocs(collection(db, "employee"));
+let list = [];
+let employeeIndex = 0;
+window.onload = fetchData();
+
+Date.prototype.today = function () {
+  return (
+    (this.getDate() < 10 ? "0" : "") +
+    this.getDate() +
+    "/" +
+    (this.getMonth() + 1 < 10 ? "0" : "") +
+    (this.getMonth() + 1) +
+    "/" +
+    this.getFullYear()
+  );
+};
+
+// For time now
+Date.prototype.timeNow = function () {
+  return (
+    (this.getHours() < 10 ? "0" : "") +
+    this.getHours() +
+    ":" +
+    (this.getMinutes() < 10 ? "0" : "") +
+    this.getMinutes() +
+    ":" +
+    (this.getSeconds() < 10 ? "0" : "") +
+    this.getSeconds()
+  );
+};
+// function to fetch the data from the database
+function fetchData() {
+  console.log("employee list is running");
+  users.forEach((user) => {
+    console.log(user.data());
+    list.push({ id: user.id, ...user.data() });
+  });
+}
+
+function updateEmployeeIndex(index) {
+  employeeIndex = index;
+}
+
+async function updateAttendence(id, i) {
+  const idRef = doc(db, "employee", id);
+  await updateDoc(idRef, {
+    presence: arrayUnion({
+      date: new Date().today(),
+      attendence: true,
+    }),
+  });
+}
+
+// array to add the label names to the database
+let labelList = [];
+// array to add the image to the database
+let image = [];
+let id = [];
+// function to add the data to the database
+list.forEach((user) => {
+  labelList.push(user.details.email);
+  image.push(user.details.image1);
+  id.push(user.id);
+});
+
+// making promises to load the models
+Promise.all([
+  // // calling the face detection model for viet js
+  faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
+  // calling the face landmark model
+  faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
+  // calling the face descriptor model
+  faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
+  // calling the face descriptor model
+  faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
+]).then(start);
 
 // stream video to the video element
 function start() {
@@ -71,7 +147,14 @@ async function recognizeFaces() {
       const drawBox = new faceapi.draw.DrawBox(box, {
         label: result.toString(),
       });
-      console.log(result.toString());
+      let index = labelList.indexOf(result._label);
+
+      // if there is arr then update the attendence
+      if (index != -1) {
+        if (result._label != "unknown") {
+          updateAttendence(list[index].id);
+        }
+      }
       drawBox.draw(canvas);
     });
 
@@ -90,20 +173,22 @@ async function recognizeFaces() {
 function loadLabeledImages() {
   // Load the folder names in /labeled_images
 
-  const labels = ["saurabh soni", "Tanish Gupta", "yash sharma"];
+  // create an array to add the labeled images
+  const labelNames = labelList;
+
+  // create an array to add the labeled images
   return Promise.all(
-    labels.map(async (label) => {
+    labelNames.map(async (label, index) => {
       const descriptions = [];
-      for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(
-          `../FaceDetection//labeled_images/${label}/${i}.jpg`
-        );
-        const detections = await faceapi
-          .detectSingleFace(img)
-          .withFaceLandmarks()
-          .withFaceDescriptor();
-        descriptions.push(detections.descriptor);
-      }
+      console.log(image[index]);
+      const img = await faceapi.fetchImage(image[index]);
+      updateEmployeeIndex(index);
+      const detections = await faceapi
+        .detectSingleFace(img)
+        .withFaceLandmarks()
+        .withFaceDescriptor();
+      descriptions.push(detections.descriptor);
+      // console.log("descriptions: ", label);
       return new faceapi.LabeledFaceDescriptors(label, descriptions);
     })
   );

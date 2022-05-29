@@ -1,6 +1,23 @@
+// importing required packages
 import { app, db, storage } from "../../../lib/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { uploadBytes, ref, listAll, getDownloadURL } from "firebase/storage";
+
+// function to get image from camera
+let storageRef = ref(storage, `employees/`);
+
+listAll(storageRef)
+  .then((res) => {
+    console.log(res);
+    res.items.forEach((item) => {
+      getDownloadURL(item).then((url) => {
+        // console.log(url);
+      });
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // display name of current user
 const form = document.getElementById("form");
@@ -22,10 +39,10 @@ Date.prototype.today = function () {
   return (
     (this.getDate() < 10 ? "0" : "") +
     this.getDate() +
-    "-" +
+    "/" +
     (this.getMonth() + 1 < 10 ? "0" : "") +
     (this.getMonth() + 1) +
-    "-" +
+    "/" +
     this.getFullYear()
   );
 };
@@ -44,14 +61,20 @@ Date.prototype.timeNow = function () {
   );
 };
 
-let date = new Date().today();
+//getdata
+const users = await getDocs(collection(db, "employee"));
+let list = [];
+users.forEach((user) => {
+  list.push({ id: user.id, ...user.data() });
+});
+
 let data = {
-  presence: {
-    [date]: {
-      checkInTime: employee ? new Date().timeNow() : "",
-      attendence: employee ? "present" : "absent",
+  presence: [
+    {
+      date: "",
+      attendence: "",
     },
-  },
+  ],
   details: {
     name: null,
     email: null,
@@ -66,7 +89,7 @@ const removeUser = document.getElementById("logout");
 removeUser.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.removeItem("user");
-  window.location.href = "./loginOrSignup.html";
+  window.location.href = "../loginAndSignup/loginOrSignup.html";
 });
 
 function getUser() {
@@ -96,6 +119,7 @@ async function handleImage() {
     `employees/${data.details.name}/${imageInfo.image1.name}`
   );
   let imageRef = ref(storage, `employees/${data.details.name}`);
+  console.log(ref(storage, `employees/`));
   if (imageInfo.image1) {
     let image = imageInfo.image1;
     uploadBytes(storageRef, image).then((snapshot) => {
@@ -120,11 +144,6 @@ async function handleAdd() {
 }
 
 //get data
-const users = await getDocs(collection(db, "employee"));
-let list = [];
-users.forEach((user) => {
-  list.push({ id: user.id, ...user.data() });
-});
 
 // add event listeners and save data into data object
 image1.addEventListener("change", (e) => {
@@ -156,3 +175,15 @@ form.addEventListener("submit", (e) => {
   // make alert
   alert(`employee ${data.details.name} saved`);
 });
+
+// loader function before camera loads and remove loader after camera load and show camera
+function loader() {
+  let loader = document.getElementById("loader");
+  loader.style.display = "block";
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 2000);
+}
+
+// update status
+let status = document.getElementById("status");
