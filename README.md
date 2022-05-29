@@ -1,5 +1,5 @@
 ## Proxy : The Face-Recognition Attendence System
-<img src="" width="640" title="Proxy : The Attendence System">
+<img src="./favicon.svg" width="640" title="Proxy : The Attendence System">
 
 Proxy is a attendence marking tool with the help of Face-Recognition. It Detects faces and recognize them and on the basis of given data it marks their attendence. It is easily Integratable with any web-based app.
 
