@@ -54,5 +54,11 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 * Realtime Database
 * Easy UI
 
+## Contact
 
+feel free to contact me for anything related to this
+
+* Linkedin : https://www.linkedin.com/in/saurabh100ni/
+
+* Email : saurabhsonig12@gmail.com
 
