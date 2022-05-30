@@ -12,8 +12,11 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 ## Installation
 
 * **Method 1** : * git clone Command : ```bash https://github.com/saurabh100ni/Proxy``` 
+
                  * run *initialize.bat*
+                 
                  * run *run.bat*
+                 
                  * now your app is hosted on local server with givem port : localhost:<port>
                 
 
