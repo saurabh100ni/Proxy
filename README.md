@@ -33,7 +33,7 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 
 * HTML
 * BootStrap
-* veit js
+* vite
 * vanilla js
 * [Tensorflow Face-Api](https://github.com/vladmandic/face-api)
 * Google Firebase 
