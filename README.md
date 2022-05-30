@@ -12,7 +12,7 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 ## Installation
 
 * **Method 1** : 
-                 ```git clone Command : bash https://github.com/saurabh100ni/Proxy ```
+                 git clone Command : ```git clone https://github.com/saurabh100ni/Proxy ```
 
                  * run "initialize.bat"
                  
