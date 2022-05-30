@@ -21,13 +21,13 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
                  * now your app is hosted on local server with givem port : localhost:<port>
                 
 
-* **Method 2** : `
-                 ``` Download and use [*install.bat*](https://drive.google.com/file/d/1vykZUs2ur2_kcO57H1D5Dk7ZBzcWQbe2/view?usp=sharing) file and execute it. ```
+* **Method 2** : Download and use [*install.bat*](https://drive.google.com/file/d/1vykZUs2ur2_kcO57H1D5Dk7ZBzcWQbe2/view?usp=sharing) file and execute it.
+                 
                  * run *initialize.bat*
                  
                  * run *run.bat*
                  
-                 * now your app is hosted on local server with givem port : localhost:<port>```
+                 * now your app is hosted on local server with givem port : localhost:<port>
 
 ## Used Techonolgies
 
