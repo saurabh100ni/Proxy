@@ -24,7 +24,6 @@ const form = document.getElementById("form");
 const name = document.getElementById("nameOfEmployee");
 const email = document.getElementById("employeeEmail");
 const image1 = document.getElementById("employeeImage1");
-const image2 = document.getElementById("employeeImage2");
 
 let user = {};
 let employee = true;
@@ -106,7 +105,7 @@ if (!user) {
 function addImageUrlInData(url) {
   data.details.image1 = url;
   console.log("image link --> ", data.details.image1);
-  if (data.details.image1 !== null) {
+  if ((data.details.image1 !== null) && (data.details.name !== null) && (data.details.email !== null)) {
     handleAdd();
   } else {
     console.log("handle didnt work");
@@ -114,6 +113,7 @@ function addImageUrlInData(url) {
 }
 
 async function handleImage() {
+  if(data.details.name !== null && data.details.email !== null){
   let storageRef = ref(
     storage,
     `employees/${data.details.name}/${imageInfo.image1.name}`
@@ -133,14 +133,24 @@ async function handleImage() {
     });
   } else {
     return;
+  }}
+  else{
+    alert("Please fill all the fields");
   }
 }
 
 //add data
 async function handleAdd() {
-  const res = await addDoc(collection(db, "employee"), {
-    ...data,
-  });
+  // check if data.details.name is not null and data.details.email is not null and data.details.image1 is not null
+  if (data.details.name !== "" && data.details.email !== "" && data.details.image1 !== "") {
+    const res = await addDoc(collection(db, "employee"), {
+      ...data,
+    });
+  }
+  else {
+    alert("Please fill all the fields");
+    console.log("handleAdd didnt work");
+  }
 }
 
 //get data
@@ -163,6 +173,7 @@ email.addEventListener("change", (e) => {
 });
 
 form.addEventListener("submit", (e) => {
+
   e.preventDefault();
 
   // empty fields after submit
