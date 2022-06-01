@@ -57,11 +57,15 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 ## Important Configuration
 
 1. update line 16 to 23 with your firebase credentials in [/lib/firebase.js](https://github.com/saurabh100ni/Proxy/blob/main/lib/firebase.js)
-    <img src="src/assets/firebaseCredentials.jpg" width="320" title="Firebase credentials">
+
+
+    <img src="src/assets/firebaseCredentials.jpg" width="480" title="Firebase credentials">
 
 
 2. update line 203 to 205 in [index.html](https://github.com/saurabh100ni/Proxy/blob/main/index.html) with youre Azure Qna services chat-bot credentials
-    <img src="src/assets/AzureCredentials.jpg" width="320" title="Azure QnA services chat bot Credentials">
+
+
+    <img src="src/assets/AzureCredentials.jpg" width="480" title="Azure QnA services chat bot Credentials">
     
 3. update your firestore database rules as given below
   ```
