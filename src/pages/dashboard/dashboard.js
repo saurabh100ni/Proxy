@@ -8,15 +8,13 @@ let storageRef = ref(storage, `employees/`);
 
 listAll(storageRef)
   .then((res) => {
-    console.log(res);
     res.items.forEach((item) => {
       getDownloadURL(item).then((url) => {
-        // console.log(url);
       });
     });
   })
   .catch((err) => {
-    console.log(err);
+    alert(err);
   });
 
 // display name of current user
@@ -104,11 +102,10 @@ if (!user) {
 
 function addImageUrlInData(url) {
   data.details.image1 = url;
-  console.log("image link --> ", data.details.image1);
   if ((data.details.image1 !== null) && (data.details.name !== null) && (data.details.email !== null)) {
     handleAdd();
   } else {
-    console.log("handle didnt work");
+    return;
   }
 }
 
@@ -119,7 +116,6 @@ async function handleImage() {
     `employees/${data.details.name}/${imageInfo.image1.name}`
   );
   let imageRef = ref(storage, `employees/${data.details.name}`);
-  console.log(ref(storage, `employees/`));
   if (imageInfo.image1) {
     let image = imageInfo.image1;
     uploadBytes(storageRef, image).then((snapshot) => {
@@ -149,7 +145,6 @@ async function handleAdd() {
   }
   else {
     alert("Please fill all the fields");
-    console.log("handleAdd didnt work");
   }
 }
 
@@ -180,7 +175,6 @@ form.addEventListener("submit", (e) => {
   name.value = "";
   email.value = "";
   image1.value = "";
-  console.log("data in submit: ", data);
   handleImage(e);
 
   // make alert

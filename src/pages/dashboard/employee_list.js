@@ -7,11 +7,9 @@ fetchData();
 
 function fetchData() {
   loader(list);
-  console.log("employee list is running");
   users.forEach((user) => {
     list.push({ id: user.id, ...user.data() });
   });
-  console.log("list", list);
   addList(list);
 }
 
@@ -68,14 +66,13 @@ function addList(list) {
       count -= 10;
       addList(list);
     }
-    console.log("previous");
+
   });
   next.addEventListener("click", () => {
     if (count <= list.length) {
       count += 10;
       addList(list);
     }
-    console.log("next");
   });
 }
 

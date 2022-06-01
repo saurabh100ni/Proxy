@@ -45,9 +45,7 @@ Date.prototype.timeNow = function () {
 };
 // function to fetch the data from the database
 function fetchData() {
-  console.log("employee list is running");
   users.forEach((user) => {
-    console.log(user.data());
     list.push({ id: user.id, ...user.data() });
   });
 }
@@ -180,7 +178,6 @@ function loadLabeledImages() {
   return Promise.all(
     labelNames.map(async (label, index) => {
       const descriptions = [];
-      console.log(image[index]);
       const img = await faceapi.fetchImage(image[index]);
       updateEmployeeIndex(index);
       const detections = await faceapi
@@ -188,7 +185,6 @@ function loadLabeledImages() {
         .withFaceLandmarks()
         .withFaceDescriptor();
       descriptions.push(detections.descriptor);
-      // console.log("descriptions: ", label);
       return new faceapi.LabeledFaceDescriptors(label, descriptions);
     })
   );

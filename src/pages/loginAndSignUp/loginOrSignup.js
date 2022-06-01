@@ -21,7 +21,6 @@ googleSignup.addEventListener("click", (e) => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = auth.currentUser;
-      console.log("auth", user);
       setToLocal(user);
       window.location.href = "../dashboard/dashboard.html";
       // ...
@@ -52,7 +51,6 @@ googleLogin.addEventListener("click", (e) => {
     .then((result) => {
       // The signed-in user info.
       const user = auth.currentUser;
-      console.log("auth", user);
       setToLocal(user);
       window.location.href = "../dashboard/dashboard.html";
       // ...
@@ -73,7 +71,6 @@ googleLogin.addEventListener("click", (e) => {
 
 login.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("clicked");
   const email = document.getElementById("loginEmailInput").value;
   const password = document.getElementById("loginPasswordInput").value;
   signInWithEmailAndPassword(auth, email, password)
@@ -93,7 +90,6 @@ login.addEventListener("click", (e) => {
 
 signup.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("clicked");
   const email = document.getElementById("signUpEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
   createUserWithEmailAndPassword(auth, email, password)
