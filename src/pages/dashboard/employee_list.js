@@ -79,20 +79,6 @@ function addList(list) {
   });
 }
 
-//delete user from the firebase
-function deleteUser(id) {
-  let user = document.getElementById(id);
-  let userId = user.getAttribute("id");
-  deleteDoc(db, "employee", userId);
-  console.log("user id", userId);
-}
-
-const deleteEmployee = document.getElementById("deleteEmployee");
-deleteEmployee.addEventListener("click", (e) => {
-  let id = e.target.id;
-  deleteUser(id);
-});
-
 //search employee from email from table
 const search = document.getElementById("search");
 search.addEventListener("keyup", (e) => {
