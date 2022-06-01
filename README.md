@@ -92,9 +92,10 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
   
   ```
   
-5. On Google cloud shell run command to set cors configuration for all domains . else it may not work
+5. On Google cloud shell run following commands to set cors configuration for all domains . else it may not work
 ```
-  curl -L "https://drive.google.com/file/d/19Ttaav8bGgYsraM_uaFFFVABd_Wb7Psh/view?usp=sharing" > cors_config.json
+  - curl -L "https://drive.google.com/file/d/19Ttaav8bGgYsraM_uaFFFVABd_Wb7Psh/view?usp=sharing" > cors_config.json
+  - gsutil cors set cors_config.json gs://<appName>.appspot.com
 
 ```
   
