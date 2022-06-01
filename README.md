@@ -82,12 +82,12 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 4. update your firebase storage rules as given below
   ```
     rules_version = '2';
-    service firebase.storage {
-      match /b/{bucket}/o {
-        match /{allPaths=**} {
-          allow read, write: if true;
-        }
+      service firebase.storage {
+         match /b/{bucket}/o {
+          match /{allPaths=**} {
+            allow read, write;
       }
+     }
     }
   
   ```
