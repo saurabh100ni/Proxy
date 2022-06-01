@@ -14,7 +14,7 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 * **Method 1** : 
                  git clone Command : ```git clone https://github.com/saurabh100ni/Proxy ```
 
-                 * run "initialize.bat"
+                 * run "initialize.bat" (Only for first time)
                  
                  * run "run.bat"
                  
@@ -23,7 +23,7 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 
 * **Method 2** : Download and use [*install.bat*](https://drive.google.com/file/d/1vykZUs2ur2_kcO57H1D5Dk7ZBzcWQbe2/view?usp=sharing) file and execute it.
                  
-                 * run *initialize.bat*
+                 * run *initialize.bat* (Only for first time)
                  
                  * run *run.bat*
                  
