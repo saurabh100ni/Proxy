@@ -100,6 +100,7 @@ signup.addEventListener("click", (e) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      alert("User created");
       // ...
     })
     .catch((error) => {
