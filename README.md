@@ -14,9 +14,9 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
 * **Method 1** : 
                  git clone Command : ```git clone https://github.com/saurabh100ni/Proxy ```
 
-                 * run "initialize.bat" (Only for first time)
+                 * run command "npm install" (Only for first time)
                  
-                 * run "run.bat"
+                 * run command "npm run dev"
                  
                  * now your app is hosted on local server with given port : localhost:<port>
                 
