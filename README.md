@@ -92,6 +92,21 @@ Proxy is a attendence marking tool with the help of Face-Recognition. It Detects
   
   ```
   
+5. Google cloud cors_config.json
+ ```
+  [
+    {
+      "origin": ["*"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+     }
+  ]
+  
+```
+  
+6. create firestore database collection called "employee" and create firebase storage account called "employees"
+7. You are all set to go
+  
 
 ## Contact
 
